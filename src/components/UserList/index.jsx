@@ -9,6 +9,7 @@ import {
 
 import "./styles.css";
 import models from "../../modelData/models";
+import { Link } from "react-router-dom";
 
 /**
  * Define UserList, a React component of Project 4.
@@ -27,7 +28,9 @@ function UserList () {
           {users.map((item) => (
             <>
               <ListItem>
-                      <ListItemText primary={item.first_name}/>
+                <Link to={"/users/" + item._id}>
+                  <ListItemText primary={item.first_name}/>
+                </Link>
               </ListItem>
               <Divider />
             </>

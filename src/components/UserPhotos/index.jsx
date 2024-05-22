@@ -7,8 +7,11 @@ import {useParams} from "react-router-dom";
 /**
  * Define UserPhotos, a React component of Project 4.
  */
-function UserPhotos () {
+function UserPhotos (props) {
     const user = useParams();
+    // update name via URL param
+    props.handleNameFn(user.userId);
+    
     return (
       <Typography variant="body1">
         This should be the UserPhotos view of the PhotoShare app. Since it is

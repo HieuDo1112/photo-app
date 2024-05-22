@@ -1,25 +1,38 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import { Typography, ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 
 import "./styles.css";
 import {useParams} from "react-router-dom";
+import models from "../../modelData/models";
+// import images from "../../images";
 
 /**
  * Define UserPhotos, a React component of Project 4.
  */
 function UserPhotos (props) {
     const user = useParams();
-    // update name via URL param
-    props.handleNameFn(user.userId);
+    const photo_info = models.photoOfUserModel(user.userId);
+    const author_infor = models.userModel(user.userId);
     
     return (
-      <Typography variant="body1">
-        This should be the UserPhotos view of the PhotoShare app. Since it is
-        invoked from React Router the params from the route will be in property
-        match. So this should show details of user:
-        {user.userId}. You can fetch the model for the user
-        from models.photoOfUserModel(userId):
-      </Typography>
+      <>
+        <Typography>
+          Author: {author_infor.first_name} {author_infor.last_name}
+        </Typography>
+        <Typography>
+          Picture took in: {author_infor.location}
+        </Typography>
+        <ImageList gap={8}>
+          {photo_info.map((item) => (
+            <ImageListItem>
+              <img
+                src={`${process.env.PUBLIC_URL}/images/${item.file_name}`}
+              />
+              <ImageListItemBar position="below" title={`${item.file_name}`}/>
+            </ImageListItem>
+          ))}
+        </ImageList>
+      </>
     );
 }
 

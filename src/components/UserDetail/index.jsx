@@ -2,7 +2,7 @@ import React from "react";
 import {Typography} from "@mui/material";
 
 import "./styles.css";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import models from "../../modelData/models";
 
 /**
@@ -26,6 +26,7 @@ function UserDetail(props) {
       <Typography>
         Location: {info.location}
       </Typography>
+      <Link to={"/photos/" + user.userId}><button>See Photo</button></Link>
     </>
   );
 }

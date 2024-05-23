@@ -382,4 +382,16 @@ const models = {
   schemaInfo: schemaModel,
 };
 
-export default models;
+if ( typeof exports !== 'undefined' ) {
+  // We're being loaded by the Node.js module loader ('require') so we use its
+  // conventions of returning the object in exports.
+  exports.models = models;
+
+} else {
+  // We're not in the Note.js module loader so we assume we're being loaded
+  // by the browser into the DOM.
+  window.models = models;
+
+}
+
+// export default models;

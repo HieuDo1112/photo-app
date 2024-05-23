@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 
 import "./styles.css";
 import { useParams } from "react-router-dom";
-import models from "../../modelData/models";
+import FetchModel from "../../lib/fetchModelData";
 
 /**
  * Define TopBar, a React component of Project 4.
  */
-const TopBar = (props) => {
+const TopBar = () => {
   const user = useParams();
-  const info = models.userModel(user.userId);
-
+  const info = FetchModel("http://localhost:8000/users/" + user.userId);
+  
   return (
     <AppBar className="topbar-appBar" position="absolute">
       <Toolbar>

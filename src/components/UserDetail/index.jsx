@@ -3,15 +3,17 @@ import {Typography} from "@mui/material";
 
 import "./styles.css";
 import {Link, useParams} from "react-router-dom";
-import models from "../../modelData/models";
+import FetchModel from "../../lib/fetchModelData";
 
 /**
  * Define UserDetail, a React component of Project 4.
- */
-function UserDetail(props) {
+ */ 
+function UserDetail() {
   const user = useParams();
-  const info = models.userModel(user.userId);
-
+  const info = FetchModel("http://localhost:8000/users/" + user.userId)
+  // It fetch new data but no update
+  console.log("Fetch INFO", info)
+  
   return (
     <>
       <Typography>

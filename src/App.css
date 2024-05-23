@@ -3,6 +3,7 @@
 }
 
 .main-grid-item {
-  height: calc(100vh - 85px);
+  height: auto;
+  min-height: 30px; 
   padding: 10px;
 }
